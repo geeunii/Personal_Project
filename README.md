@@ -3,12 +3,6 @@
 > **Java Swing 기반 7키 리듬 게임**  
 > 음악에 맞춰 떨어지는 노트를 타이밍에 맞게 입력하는 클래식 리듬 게임
 
-<p align="center">
-  <br>
-  <img src="https://private-user-images.githubusercontent.com/44717307/309545036-7b0aad76-e37e-41de-88db-f304c0844a0b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDk0NjQ1MjEsIm5iZiI6MTcwOTQ2NDIyMSwicGF0aCI6Ii80NDcxNzMwNy8zMDk1NDUwMzYtN2IwYWFkNzYtZTM3ZS00MWRlLTg4ZGItZjMwNGMwODQ0YTBiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzAzVDExMTAyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ4ZTRiZmRlMWYwNGRkZGNlMGE4YmI0NWQxZTYzOWI2MTg1NWQ3NjUxNjA4YWJiOTE2ODA1NWU2ZWE1MDkzMjEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.bLWRDnv7DeqHKBwlX9QUuYy5misCYOZoVl5Z0fVGFyE">
-  <br>
-</p>
-
 ---
 
 ## 📑 목차
