@@ -12,28 +12,28 @@ import javax.swing.ImageIcon;
 public class Game extends Thread{
 	
 	// ingame 각 버튼멸 및 노트 닷지, 이펙트 이미지
-	private Image noteRouteLineImage = new ImageIcon("images/noteRouteLine.png").getImage();
-	private Image judgementLineImage = new ImageIcon("images/judgementLine.png").getImage();
-	private Image gameInfoImage = new ImageIcon("images/gameInfo.png").getImage();
-	private Image noteRouteSImage = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteDImage = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteFImage = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteSpace1Image = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteSpace2Image = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteJImage = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteKImage = new ImageIcon("images/noteRoute.png").getImage();
-	private Image noteRouteLImage = new ImageIcon("images/noteRoute.png").getImage();
+	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("/images/noteRouteLine.png")).getImage();
+	private Image judgementLineImage = new ImageIcon(Main.class.getResource("/images/judgementLine.png")).getImage();
+	private Image gameInfoImage = new ImageIcon(Main.class.getResource("/images/gameInfo.png")).getImage();
+	private Image noteRouteSImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteDImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteFImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteSpace1Image = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteSpace2Image = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteJImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteKImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+	private Image noteRouteLImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
 	private Image blueFlareImage;
 	private Image judgeImage;
-	private Image keyPadSImage = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadDImage = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadFImage = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadSpace1Image = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadSpace2Image = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadJImage = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadKImage = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image keyPadLImage = new ImageIcon("images/keyPadBasic.png").getImage();
-	private Image comboImage = new ImageIcon("images/combo.png").getImage();
+	private Image keyPadSImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadDImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadFImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadSpace1Image = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadSpace2Image = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadJImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadKImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image keyPadLImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+	private Image comboImage = new ImageIcon(Main.class.getResource("/images/combo.png")).getImage();
 	
 	// 게임 실행 시 그 게임에 맞는 음악을 플레이하기 위한 변수
 	private String titleName;
@@ -91,7 +91,7 @@ public class Game extends Thread{
 			// 노트 판정의 마지노선이 620 이기 때문에
 	        // 620 이 넘어가는 note 들에 대해서는 miss 이미지 출력
 			if(note.getY() > 620) {
-				judgeImage = new ImageIcon("images/judgeMiss.png").getImage();
+				judgeImage = new ImageIcon(Main.class.getResource("/images/judgeMiss.png")).getImage();
 				score -= 10;
 				combo = 0;
 			}
@@ -165,89 +165,89 @@ public class Game extends Thread{
 	// release 메서드 : 해당 버튼에서 손을 뗐을 때 이미지 변경
 	public void pressS() {
 		judge("S");
-		noteRouteSImage = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadSImage = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteSImage = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadSImage = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3", false).start();
 	}
 	
 	public void releaseS() {
-		noteRouteSImage = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadSImage = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteSImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadSImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	
 	public void pressD() {
 		judge("D");
-		noteRouteDImage = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadDImage = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteDImage = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadDImage = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3", false).start();
 	}
 	
 	public void releaseD() {
-		noteRouteDImage = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadDImage = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteDImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadDImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	
 	public void pressF() {
 		judge("F");
-		noteRouteFImage = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadFImage = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteFImage = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadFImage = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3", false).start();
 	}
 	
 	public void releaseF() {
-		noteRouteFImage = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadFImage = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteFImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadFImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	
 	public void pressSpace() {
 		judge("Space");
-		noteRouteSpace1Image = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadSpace1Image = new ImageIcon("images/keyPadPressed.png").getImage();
-		noteRouteSpace2Image = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadSpace2Image = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteSpace1Image = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadSpace1Image = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
+		noteRouteSpace2Image = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadSpace2Image = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumBig1.mp3", false).start();
 	}
 	
 	public void releaseSpace() {
-		noteRouteSpace1Image = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadSpace1Image = new ImageIcon("images/keyPadBasic.png").getImage();
-		noteRouteSpace2Image = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadSpace2Image = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteSpace1Image = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadSpace1Image = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
+		noteRouteSpace2Image = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadSpace2Image = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	
 	public void pressJ() {
 		judge("J");
-		noteRouteJImage = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadJImage = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteJImage = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadJImage = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3", false).start();
 	}
 	
 	public void releaseJ() {
-		noteRouteJImage = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadJImage = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteJImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadJImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	
 	public void pressK() {
 		judge("K");
-		noteRouteKImage = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadKImage = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteKImage = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadKImage = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3", false).start();
 	}
 	
 	public void releaseK() {
-		noteRouteKImage = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadKImage = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteKImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadKImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	public void pressL() {
 		judge("L");
-		noteRouteLImage = new ImageIcon("images/noteRoutePressed.png").getImage();
-		keyPadLImage = new ImageIcon("images/keyPadPressed.png").getImage();
+		noteRouteLImage = new ImageIcon(Main.class.getResource("/images/noteRoutePressed.png")).getImage();
+		keyPadLImage = new ImageIcon(Main.class.getResource("/images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3", false).start();
 	}
 	
 	public void releaseL() {
-		noteRouteLImage = new ImageIcon("images/noteRoute.png").getImage();
-		keyPadLImage = new ImageIcon("images/keyPadBasic.png").getImage();
+		noteRouteLImage = new ImageIcon(Main.class.getResource("/images/noteRoute.png")).getImage();
+		keyPadLImage = new ImageIcon(Main.class.getResource("/images/keyPadBasic.png")).getImage();
 	}
 	
 	@Override
@@ -368,35 +368,35 @@ public class Game extends Thread{
 	
 	public void judgeEnent(String judge) {
 		if(!judge.equals("None")) {
-			blueFlareImage = new ImageIcon("images/blueFlare.png").getImage();
+			blueFlareImage = new ImageIcon(Main.class.getResource("/images/blueFlare.png")).getImage();
 		}
 		if(judge.equals("Miss")) {
-			judgeImage = new ImageIcon("images/judgeMiss.png").getImage();
+			judgeImage = new ImageIcon(Main.class.getResource("/images/judgeMiss.png")).getImage();
 			score -= 10;
 			combo = 0;
 		}
 		else if(judge.equals("Late")) {
-			judgeImage = new ImageIcon("images/judgeLate.png").getImage();
+			judgeImage = new ImageIcon(Main.class.getResource("/images/judgeLate.png")).getImage();
 			score += 5;
 			combo += 1;
 		}
 		else if(judge.equals("Good")) {
-			judgeImage = new ImageIcon("images/judgeGood.png").getImage();
+			judgeImage = new ImageIcon(Main.class.getResource("/images/judgeGood.png")).getImage();
 			score += 20;
 			combo += 1;
 		}
 		else if(judge.equals("Great")) {
-			judgeImage = new ImageIcon("images/judgeEarly.png").getImage();
+			judgeImage = new ImageIcon(Main.class.getResource("/images/judgeEarly.png")).getImage();
 			score += 30;
 			combo += 1;
 		}
 		else if(judge.equals("Perfect")) {
-			judgeImage = new ImageIcon("images/judgePerfect.png").getImage();
+			judgeImage = new ImageIcon(Main.class.getResource("/images/judgePerfect.png")).getImage();
 			score += 50;
 			combo += 1;
 		}
 		else if(judge.equals("Early")) {
-			judgeImage = new ImageIcon("images/judgeEarly.png").getImage();
+			judgeImage = new ImageIcon(Main.class.getResource("/images/judgeEarly.png")).getImage();
 			score += 10;
 			combo += 1;
 		}

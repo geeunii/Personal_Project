@@ -3,6 +3,7 @@ package dynamic_beat_final;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 
 import javazoom.jl.player.Player;
 
@@ -10,17 +11,17 @@ public class Music extends Thread {
 	
 	private Player player; // mp3 를 재생해주는 클래스
 	private boolean isLoop; // 음악의 무한 루프 확인
-	private File file; // 파일을 가져오는 클래스
-	private FileInputStream fis;
+	private InputStream fis;
 	private BufferedInputStream bis;
+    private String name;
 	
 	// 음악 mp3 파일 이름, 음악 반복재생 여부, 게임관련 음악인지 메뉴 관련 음악인지 여부
 	public Music(String name, boolean isLoop) {
 		try {
 			this.isLoop = isLoop; // isLoop 초기화
+            this.name = name;
 			// 음악 파일을 inputstream 에 넣어서 가져옴
-			file = new File ("music/" + name);
-			fis = new FileInputStream(file);
+			fis = Main.class.getResourceAsStream("/music/" + name);
 			bis = new BufferedInputStream(fis);
 			player = new Player(bis);
 		} catch (Exception e) {
@@ -49,9 +50,11 @@ public class Music extends Thread {
 		try {
 			do {
 				player.play(); // 최종적으로 player 인스턴스는 버퍼에 담긴 음악 파일을 play
-				//fis = new FileInputStream(file);
-				//bis = new BufferedInputStream(fis);
-				//player = new Player(bis);
+				if (isLoop) {
+                    fis = Main.class.getResourceAsStream("/music/" + name);
+                    bis = new BufferedInputStream(fis);
+                    player = new Player(bis);
+                }
 			} while (isLoop == true); // isLoop 가 true 인 동안 음악 반복 재생
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

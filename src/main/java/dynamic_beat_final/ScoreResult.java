@@ -8,7 +8,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class ScoreResult extends Thread {
-    private Image scoreResult = new ImageIcon("images/scoreResult.png").getImage();
+    private Image scoreResult = new ImageIcon(Main.class.getResource("/images/scoreResult.png")).getImage();
 
     // Graphics2D를 인스턴스 변수로 사용하지 않음
     // Graphics2D g;

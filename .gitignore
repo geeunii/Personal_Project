@@ -1,6 +1,14 @@
-/bin/
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Gradle
+.gradle/
+build/
+
+# Eclipse (이제 필요 없으므로 무시)
 .classpath
 .project
 .settings/
 bin/
-*.class
