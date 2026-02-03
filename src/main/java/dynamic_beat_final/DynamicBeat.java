@@ -2,10 +2,11 @@ package dynamic_beat_final;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -73,12 +74,11 @@ public class DynamicBeat extends JFrame {
     private int nowSelected = 0;
 
     private boolean isResult = false;
-    ScoreResult scoreResult;
+    private ScoreResult scoreResult;
 
     // Game 인스턴스 생성 && 초기화 :
-    // 이때 game 변수는 단 하나의 게임만 진행가능하며 game 변수자체가 프로젝트 전체에서 사용되어야하기 때문에
-    // static 으로 만들어줌
-    public static Game game;
+    // static 제거하여 인스턴스 변수로 변경
+    private Game game;
 
     // 화면 그리기용 패널 (더블 버퍼링 문제 해결)
     private GamePanel gamePanel = new GamePanel();
@@ -106,7 +106,7 @@ public class DynamicBeat extends JFrame {
         gamePanel.setBackground(new Color(0,0,0,0));
         setContentPane(gamePanel); // gamePanel을 메인 컨텐츠로 설정
 
-        // add해서 KeyListener 에 내가 만든 KeyListen 인식
+        // 내부 클래스로 정의된 KeyListener 사용
         addKeyListener(new KeyListener());
 
         // 게임 시작시 인트로 음악 재생
@@ -393,6 +393,65 @@ public class DynamicBeat extends JFrame {
         }
     }
 
+    // 내부 클래스로 KeyListener 정의
+    class KeyListener extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(game == null) {
+                return;
+            }
+            if(e.getKeyCode() == KeyEvent.VK_S) {
+                game.pressS();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_D) {
+                game.pressD();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_F) {
+                game.pressF();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+                game.pressSpace();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_J) {
+                game.pressJ();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_K) {
+                game.pressK();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_L) {
+                game.pressL();
+            }
+        }
+        
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if(game == null) {
+                return;
+            }
+            if(e.getKeyCode() == KeyEvent.VK_S) {
+                game.releaseS();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_D) {
+                game.releaseD();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_F) {
+                game.releaseF();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+                game.releaseSpace();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_J) {
+                game.releaseJ();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_K) {
+                game.releaseK();
+            }
+            else if(e.getKeyCode() == KeyEvent.VK_L) {
+                game.releaseL();
+            }
+        }
+    }
+
 	public void screenDraw(Graphics2D g) {
 		g.drawImage(background, 0, 0, null);
 		
@@ -408,7 +467,11 @@ public class DynamicBeat extends JFrame {
 		{
 			game.screenDraw(g);
 		}
-        // paintComponents(g); // JPanel을 사용하므로 더 이상 필요 없음. 컴포넌트들은 자동으로 그려짐.
+        
+        // 결과 화면 그리기 (나중에 로직 추가 시 사용)
+        if(isResult && scoreResult != null) {
+            scoreResult.draw(g);
+        }
 	}
 
 	// 현재 선택된 곡의 번호를 넣어줌으로써 해당 곡이 선택됨을 알림
@@ -467,10 +530,6 @@ public class DynamicBeat extends JFrame {
 		// game 인스턴스 안에 있는 run 함수 실행
 		game.start();
 		
-		// 게임 시작 시 점수 & 콤보 초기화
-		Game.combo = 0;
-	    Game.score = 0;
-
 	    // 키보드 이벤트 동작을 위한 메서드
 	    // 이는 Main 클래스에 포커스가 맞춰져있어야 키보드 이벤트가 정상적으로 동작하기 때문
 		setFocusable(true);
@@ -482,9 +541,7 @@ public class DynamicBeat extends JFrame {
 		isMainScreen = true;
 		isGameScreen = false;
 		isResult = false;
-        if(!isResult && scoreResult != null){
-            scoreResult.close();
-        }
+        // scoreResult = null; // 필요 시 초기화
 		// 버튼 보이게
 		leftButton.setVisible(true);
 		rightButton.setVisible(true);
@@ -497,7 +554,9 @@ public class DynamicBeat extends JFrame {
 		// 다시 트랙 선택
 		selectTrack(nowSelected);
 		// 메뉴로 돌아왔을 때 게임 종료
-		game.close();
+        if(game != null) {
+		    game.close();
+        }
 	}
 	
 	public void enterMain() {
@@ -517,11 +576,7 @@ public class DynamicBeat extends JFrame {
 		introMusic.close();
 		// nowselected 번째 index 재생
 		selectTrack(0);
-		// 음악 종료 후 스코어 결과를 표시하는 코드
-        // ScoreResult는 별도 스레드로 동작하므로 Graphics 객체를 직접 넘기는 것은 위험할 수 있음.
-        // 하지만 기존 로직 유지를 위해 일단 둠. (추후 리팩토링 대상)
-	    ScoreResult scoreResult = new ScoreResult((Graphics2D) gamePanel.getGraphics());
-	    scoreResult.start();
+		// ScoreResult 관련 코드는 삭제함 (게임 종료 시 보여줘야 함)
 	}
 
 }

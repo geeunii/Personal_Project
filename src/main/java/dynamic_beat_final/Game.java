@@ -41,11 +41,11 @@ public class Game extends Thread{
 	private String musicTitle;
 	private Music gameMusic;
 	
-	// 점수, 콤보 출력
-    static int score = 0;
-    static int highScore = 0;
-    static int combo = 0;
-    static int highCombo = 0;
+	// 점수, 콤보 출력 (static 제거)
+    private int score = 0;
+    private int highScore = 0;
+    private int combo = 0;
+    private int highCombo = 0;
 	
     // 음악 노트를 개별적으로 관리할 ArrayList
 	ArrayList<Note> noteList = new ArrayList<Note>();
@@ -405,4 +405,20 @@ public class Game extends Thread{
 	 public Music length(){
 	        return gameMusic;
 	    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public int getCombo() {
+        return combo;
+    }
+
+    public int getHighCombo() {
+        return highCombo;
+    }
 }
