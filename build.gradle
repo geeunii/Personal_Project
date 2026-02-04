@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.geeunii' // 본인이 원하는 그룹명
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // README에 있던 JLayer 라이브러리를 여기서 자동으로 받아옵니다.
+    implementation 'javazoom:jlayer:1.0.1'
+}
+
+test {
+    useJUnitPlatform()
+}

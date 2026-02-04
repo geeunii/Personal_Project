@@ -7,24 +7,19 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class ScoreResult extends Thread {
-    private Image scoreResult = new ImageIcon("images/scoreResult.png").getImage();
+public class ScoreResult {
+    private Image scoreResultImage = new ImageIcon(Main.class.getResource("/images/scoreResult.png")).getImage();
+    private Game game;
 
-    // Graphics2D를 인스턴스 변수로 사용하지 않음
-    // Graphics2D g;
-
-    // 생성자에서 Graphics2D를 받아와서 인스턴스 변수에 저장
-    private Graphics2D g;
-
-    public ScoreResult(Graphics2D g) {
-        this.g = g;
+    public ScoreResult(Game game) {
+        this.game = game;
     }
 
-    public void screenDraw() {
+    public void draw(Graphics2D g) {
         String grade = null;
 
-        int totalScore = Game.score;
-        int totalCombo = Game.combo;
+        int totalScore = game.getScore();
+        int totalCombo = game.getCombo();
 
         if (totalScore > (300 * 100 * 0.9)) {
             grade = "S";
@@ -35,7 +30,7 @@ public class ScoreResult extends Thread {
         } else if (totalScore >= 0) {
             grade = "C";
         }
-        g.drawImage(scoreResult, 240, 70, null);
+        g.drawImage(scoreResultImage, 240, 70, null);
 
         g.setFont(new Font("Arial", Font.BOLD, 100));
         g.setColor(Color.white);
@@ -44,14 +39,5 @@ public class ScoreResult extends Thread {
 
         g.setColor(Color.pink);
         g.drawString(grade, 600, 500);
-    }
-
-    @Override
-    public void run() {
-        screenDraw();
-    }
-
-    public void close() {
-        interrupt();
     }
 }

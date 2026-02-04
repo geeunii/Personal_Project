@@ -1,5 +1,7 @@
 package dynamic_beat_final;
 
+import javax.swing.SwingUtilities;
+
 public class Main {
 
 	public static final int SCREEN_WIDTH = 1280;
@@ -13,7 +15,11 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		DynamicBeat dynamicBeat = new DynamicBeat();
+        // Swing 프로그램은 Event Dispatch Thread에서 실행하는 것이 원칙입니다.
+        SwingUtilities.invokeLater(() -> {
+            DynamicBeat dynamicBeat = new DynamicBeat();
+            dynamicBeat.setVisible(true);
+        });
 		
 	}
 

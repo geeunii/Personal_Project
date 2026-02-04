@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 */
 public class Note extends Thread {
 
-	private Image noteBasicImage = new ImageIcon("images/noteBasic.png").getImage();
+	private Image noteBasicImage = new ImageIcon(Main.class.getResource("/images/noteBasic.png")).getImage();
 	
 	// 현재 노트 위치 확인을 위한 x, y 좌표
     // 이 중 y 값의 시작위치를 특정값으로 고정으로 해두어서
